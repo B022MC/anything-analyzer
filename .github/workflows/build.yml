@@ -16,8 +16,10 @@ jobs:
             platform: win
           - os: macos-latest
             platform: mac-arm64
+            arch: arm64
           - os: macos-13
             platform: mac-x64
+            arch: x64
           - os: ubuntu-latest
             platform: linux
 
@@ -29,8 +31,6 @@ jobs:
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: latest
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -41,6 +41,8 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
+        env:
+          ELECTRON_MIRROR: ""
 
       - name: Build
         run: pnpm run build
@@ -51,7 +53,7 @@ jobs:
 
       - name: Package for macOS
         if: startsWith(matrix.platform, 'mac')
-        run: npx electron-builder --mac --publish never
+        run: npx electron-builder --mac --${{ matrix.arch }} --publish never
 
       - name: Package for Linux
         if: matrix.platform == 'linux'
@@ -65,7 +67,6 @@ jobs:
             dist/*.exe
             dist/*.dmg
             dist/*.AppImage
-            dist/*.yml
           if-no-files-found: error
 
   release:
