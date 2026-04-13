@@ -170,7 +170,7 @@ const ReportView: React.FC<ReportViewProps> = ({
           image={<FileTextOutlined style={{ fontSize: 48, color: 'rgba(255,255,255,0.25)' }} />}
           description="No analysis report yet"
         />
-        <Button type="primary" icon={<RobotOutlined />} onClick={onReAnalyze}>
+        <Button type="primary" icon={<RobotOutlined />} onClick={() => onReAnalyze()}>
           Start AI Analysis
         </Button>
       </div>
@@ -208,7 +208,7 @@ const ReportView: React.FC<ReportViewProps> = ({
           </Button>
           <Button
             icon={<ReloadOutlined />}
-            onClick={onReAnalyze}
+            onClick={() => onReAnalyze()}
             size="small"
           >
             Re-analyze
