@@ -173,6 +173,12 @@ Finally，Thanks to everyone on LinuxDo for their support! Welcome to join https
 
 ---
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=Mouseww/anything-analyzer&type=Date)](https://star-history.com/#Mouseww/anything-analyzer&Date)
+
+---
+
 ## License
 
 MIT
